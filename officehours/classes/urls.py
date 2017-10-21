@@ -20,4 +20,6 @@ from . import views
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^student_login$', views.student_login, name='student_login'),
+    url(r'^waiting$', views.student_waiting, name='student_waiting'),
+    url(r'session/(?P<pk>[0-9]+)', views.SessionDetailView.as_view(), name='session_detail_view'),
 ]

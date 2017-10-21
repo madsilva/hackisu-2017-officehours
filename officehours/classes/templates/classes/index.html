@@ -1,4 +1,6 @@
 {% extends 'classes/base.html' %}
 {% block content %}
-content is overrated.
+<form action="{% url "student_login" %}">
+    <input type="submit" value="Student login">
+</form>
 {% endblock %}

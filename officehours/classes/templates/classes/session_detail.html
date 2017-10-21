@@ -1,0 +1,8 @@
+{% extends 'classes/base.html' %}
+{% block content %}
+{% load static %}
+
+{% for question in question_list %}
+<p><img src="{% static "classes/parrot-small.gif" %}">{{ number }}{{ question.student }} at {{ question.time_asked }}</p>
+{% endfor %}
+{% endblock %}
