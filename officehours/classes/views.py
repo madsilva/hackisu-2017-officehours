@@ -18,3 +18,6 @@ def student_login(request):
         form = StudentLoginForm()
 
     return render(request, 'classes/student_login.html', context={'form':form})
+
+
+def student_waiting(request):
