@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import DetailView
 
-from .forms import StudentLoginForm
+from .forms import StudentLoginForm, CreateSessionForm
 from .models import Question, Student, Session
 
 
@@ -35,11 +35,26 @@ def ta_dashboard(request):
     sessions = Session.objects.filter(owned_by=current_user)
     if sessions.count() != 0:
         context['session_exists'] = 'true'
-        session = Session.objects.get(owned_by=current_user)
+        context['session'] = Session.objects.get(owned_by=current_user)
+        context['question_list'] = Question.objects.filter(session=context['session']).all()
     else:
         context['session_exists'] = 'false'
 
     return render(request, 'classes/ta_dashboard.html', context)
+
+
+def create_session(request):
+    if request.method == 'POST':
+        form = CreateSessionForm(request.POST)
+        if form.is_valid():
+            session = Session.objects.create(owned_by=request.user, password=form.cleaned_data['session_password'])
+            session.save()
+            return HttpResponseRedirect('/ta_dashboard')
+    else:
+        form = CreateSessionForm()
+
+    return render(request, 'classes/create_session.html', context={'form': form})
+
 
 def student_waiting(request):
     return render(request, 'classes/student_waiting.html')

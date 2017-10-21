@@ -2,6 +2,11 @@ from django import forms
 
 from .models import Student, Session, Question
 
+
+class CreateSessionForm(forms.Form):
+    session_password = forms.CharField()
+
+
 class StudentLoginForm(forms.Form):
     canvas_id = forms.CharField()
     session_password = forms.CharField()

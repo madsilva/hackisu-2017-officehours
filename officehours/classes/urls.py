@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^waiting$', views.student_waiting, name='student_waiting'),
     url(r'^session/(?P<pk>[0-9]+)', views.SessionDetailView.as_view(), name='session_detail_view'),
     url(r'^ta_dashboard$', views.ta_dashboard, name='ta_dashboard'),
+    url(r'^create_session', views.create_session, name='create_session'),
 ]

@@ -46,8 +46,8 @@ class Session(models.Model):
     Docstring goes here theoretically
     """
 
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    date = models.DateField()
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, null=True, blank=True)
+    date = models.DateField(auto_now=True)
     password = models.CharField(max_length=20, unique=True)
     owned_by = models.OneToOneField(User, blank=True, null=True)
 
