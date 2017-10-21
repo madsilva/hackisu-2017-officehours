@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "mysql": "^2.15.0"
+    "mysql": "^2.15.0",
+    "socket.io": "^2.0.3",
+    "ws": "^3.2.0"
   },
   "author": "many many talented boiis and gurls",
   "license": "ISC"

@@ -1,0 +1,16 @@
+{
+    "courses": [
+        {
+            "course_name": "IEC",
+            "course_id": 10001300,
+            "course_year": 2017,
+            "course_semester": "fall"
+        },
+        {
+            "course_name": "CIE",
+            "course_id": 10002730,
+            "course_year": 2017,
+            "course_semester": "fall"
+        }
+    ]
+}
