@@ -1,4 +1,5 @@
 var mysql = require("mysql");
+var http = require("http");
 
 var connection = mysql.createConnection({
   host: 'phly.c7jx0v6pormd.us-east-1.rds.amazonaws.com',
@@ -22,19 +23,14 @@ var server = http.createServer((req, res)=>{
 
     var userInput = (req.url).split('?')[1];
 
-    var functionCall = userInput.split('/')[0];
-    if(userInput.split('/')[1]) var data = userInput.split('/')[1];
-
-
-    if(functionCall === 'get') {
+    if(userInput.split('/')[0] === 'get') {
         res.write("callback(" + currentlyServing() + ")");
         res.end();
-    }
-
-    else if(functionCall === 'insert') {
-        res.write("callback(" + insertStatus() + ")");
+    } else if(userInput.split('/')[0] === 'insert') {
+        res.write("callback(" + insertStatus(userInput.split('/')[1]) + ")");
         res.end();
     }
+
 }).listen(3000);
 
 
@@ -43,6 +39,7 @@ var currentlyServing = function() {
     return "serving you.";
 }
 
-var insertStatus = function() {
+var insertStatus = function(data) {
+
     return "insert";
 }
