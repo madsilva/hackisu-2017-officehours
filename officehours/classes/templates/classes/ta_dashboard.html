@@ -2,10 +2,15 @@
 {% block content %}
 
 {% if session_exists == "false" %}
-<form action="{% url 'index' %}">
+<form action="{% url 'create_session' %}">
     <input type="submit" value="Create Session">
 </form>
 {% else %}
+<h2>Session password: {{ session.password }}</h2>
+<h2>Questions</h2>
+{% for question in question_list %}
+<p>{{ question.text }} asked by {{ question.student }} at {{ question.time }}</p>
+{% endfor %}
 {% endif %}
 
 {% endblock %}
