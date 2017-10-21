@@ -15,11 +15,11 @@ class Course(models.Model):
     name = models.CharField(max_length=200)
     # course number ie CS2820
     course_number = models.CharField(max_length=10)
-    semester = models.CharField(choices=semester_choices, max_length=10)
+    semester = models.CharField(choices=semester_choices, max_length=10 )
     year = models.TextField(max_length=4)
 
     class Meta:
-        unique_together = ['year', 'semester', 'course_number']
+        unique_together = ('year', 'semester', 'course_number')
 
 
 class Student(models.Model):
@@ -43,8 +43,13 @@ class Session(models.Model):
     date = models.DateField()
 
 
-
 class Question(models.Model):
     text = models.TextField()
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     session = models.ForeignKey(Session, on_delete=models.CASCADE)
+    time_asked = models.DateTimeField(auto_now_add=True)
+    # all one field
+    answered = models.BooleanField(default=False)
+
+    class Meta():
+        unique_together = ('student', 'session')
