@@ -21,3 +21,4 @@ def student_login(request):
 
 
 def student_waiting(request):
+    pass
