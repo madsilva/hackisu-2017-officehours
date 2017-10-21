@@ -32,6 +32,7 @@ class Student(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     times_signed_in_to_session = models.IntegerField(default=0)
     current_session = models.ForeignKey('Session', blank=True, null=True, default=None)
+    section = models.IntegerField(default=0)
 
 
 class Session(models.Model):
