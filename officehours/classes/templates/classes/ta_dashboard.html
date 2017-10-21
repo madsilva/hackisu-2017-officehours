@@ -1,0 +1,11 @@
+{% extends 'classes/base.html' %}
+{% block content %}
+
+{% if session_exists == "false" %}
+<form action="{% url 'create_session' %}">
+    <input type="submit" value="Create Session">
+</form>
+{% else %}
+{% endif %}
+
+{% endblock %}

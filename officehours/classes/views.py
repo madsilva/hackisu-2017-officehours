@@ -27,6 +27,19 @@ def student_login(request):
     return render(request, 'classes/student_login.html', context={'form':form})
 
 
+def ta_dashboard(request):
+    current_user = request.user
+    if current_user is None:
+        pass
+    context = {}
+    if Session.objects.exists(user=current_user):
+        context['session_exists'] = 'true'
+        session = Session.objects.get(user=current_user)
+    else:
+        context['session_exists'] = 'false'
+
+    return render(request, 'classes/ta_dashboard.html', context)
+
 def student_waiting(request):
     return render(request, 'classes/student_waiting.html')
 

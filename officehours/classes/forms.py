@@ -26,7 +26,7 @@ class StudentLoginForm(forms.Form):
 
         if valid:
             existing_question = Question.objects.filter(student=student, session=session).all()
-            if len(existing_question) != 0:
+            if existing_question.count() != 0:
                 self.errors['question_already_asked'] = 'This student already has a question for this session.'
                 valid = False
 

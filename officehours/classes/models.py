@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Course(models.Model):
@@ -48,6 +49,7 @@ class Session(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     date = models.DateField()
     password = models.CharField(max_length=20, unique=True)
+    owned_by = models.OneToOneField(User, blank=True, null=True)
 
 
 class Question(models.Model):

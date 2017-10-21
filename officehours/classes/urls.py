@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'^student_login$', views.student_login, name='student_login'),
     url(r'^waiting$', views.student_waiting, name='student_waiting'),
     url(r'^session/(?P<pk>[0-9]+)', views.SessionDetailView.as_view(), name='session_detail_view'),
-
+    url(r'^ta_dashboard$', views.ta_dashboard, name='ta_dashboard'),
 ]
