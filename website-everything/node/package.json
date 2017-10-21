@@ -1,0 +1,14 @@
+{
+  "name": "oh",
+  "version": "1.0.0",
+  "description": "it's an app built to solve Office Hours queues",
+  "main": "serverSimpleIO.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "mysql": "^2.15.0"
+  },
+  "author": "many many talented boiis and gurls",
+  "license": "ISC"
+}
