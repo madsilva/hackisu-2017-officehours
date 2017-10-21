@@ -32,9 +32,10 @@ def ta_dashboard(request):
     if current_user is None:
         pass
     context = {}
-    if Session.objects.exists(user=current_user):
+    sessions = Session.objects.filter(owned_by=current_user)
+    if sessions.count() != 0:
         context['session_exists'] = 'true'
-        session = Session.objects.get(user=current_user)
+        session = Session.objects.get(owned_by=current_user)
     else:
         context['session_exists'] = 'false'
 

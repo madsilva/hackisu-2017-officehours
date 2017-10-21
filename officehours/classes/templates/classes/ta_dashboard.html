@@ -2,7 +2,7 @@
 {% block content %}
 
 {% if session_exists == "false" %}
-<form action="{% url 'create_session' %}">
+<form action="{% url 'index' %}">
     <input type="submit" value="Create Session">
 </form>
 {% else %}
