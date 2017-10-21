@@ -24,10 +24,10 @@ var server = http.createServer((req, res)=>{
     var userInput = (req.url).split('?')[1];
 
     if(userInput == 'get') {
-        res.write("callback(" + currentlyServing() + ")");
+        res.write("callback(\"" + currentlyServing() + "\");");
         res.end();
     } else if(userInput.split('=')[0] === 'insert') {
-        res.write("insertStatus(" + insertStatus(userInput.split('=')[1]) + ")");
+        res.write("insertStatus(\"" + insertStatus(userInput.split('=')[1]) + "\");");
         res.end();
     }
 
