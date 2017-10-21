@@ -23,11 +23,11 @@ var server = http.createServer((req, res)=>{
 
     var userInput = (req.url).split('?')[1];
 
-    if(userInput.split('/')[0] === 'get') {
+    if(userInput == 'get') {
         res.write("callback(" + currentlyServing() + ")");
         res.end();
-    } else if(userInput.split('/')[0] === 'insert') {
-        res.write("callback(" + insertStatus(userInput.split('/')[1]) + ")");
+    } else if(userInput.split('=')[0] === 'insert') {
+        res.write("insertStatus(" + insertStatus(userInput.split('=')[1]) + ")");
         res.end();
     }
 
@@ -36,10 +36,11 @@ var server = http.createServer((req, res)=>{
 
 var currentlyServing = function() {
     var data;
+    console.log("serve");
     return "serving you.";
 }
 
 var insertStatus = function(data) {
-
-    return "insert";
+    console.log("insert");
+    return data;
 }
