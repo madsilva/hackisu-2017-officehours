@@ -27,7 +27,7 @@ class Student(models.Model):
     Docstring goes here theoretically
     """
 
-    hawkid = models.CharField(max_length=20, unique=True)
+    canvas_id = models.CharField(max_length=20, unique=True)
     full_name = models.CharField(max_length=150)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     times_signed_in_to_session = models.IntegerField(default=0)
@@ -42,6 +42,7 @@ class Session(models.Model):
 
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     date = models.DateField()
+    password = models.CharField(max_length=20)
 
 
 class Question(models.Model):
