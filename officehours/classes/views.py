@@ -75,3 +75,14 @@ class SessionDeleteView(DeleteView):
     model = Session
     success_url = reverse_lazy('ta_dashboard')
     template_name = 'classes/session_delete.html'
+
+
+def change_question_status(request):
+    if request.method == 'POST':
+        new_status = request.POST['status']
+        question = Question.objects.get(pk=request.POST['pk'])
+        question.status = new_status
+        question.save()
+        return HttpResponseRedirect('/ta_dashboard')
+    else:
+        return HttpResponseRedirect('/')

@@ -25,5 +25,5 @@ urlpatterns = [
     url(r'^ta_dashboard$', views.ta_dashboard, name='ta_dashboard'),
     url(r'^create_session$', views.create_session, name='create_session'),
     url(r'^delete_session/(?P<pk>[0-9]+)', views.SessionDeleteView.as_view(), name='delete_session'),
-    
+    url(r'^change_question_status', views.change_question_status, name='change_question_staus'),
 ]
