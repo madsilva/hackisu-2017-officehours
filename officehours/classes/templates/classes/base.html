@@ -27,6 +27,7 @@
         <h1><a href="/">Welcome to the Office Hours Queue</a></h1>
         <img src="{% static "classes/parrot.gif" %}" />
           {% if user.is_authenticated %}
+          <p><a href="{% url 'ta_dashboard' %}">TA Dashboard</a></p>
           <p><a href="{% url 'logout' %}">Log out TA</a></p>
           {% endif %}
     </div>
