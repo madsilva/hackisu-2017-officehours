@@ -2,11 +2,16 @@
 {% block content %}
 {% load static %}
 
-{% for question in question_list %}
-    {% if question.status == 'working' %}
-      <p><img src="{% static "classes/parrot-small.gif" %}">{{ number }}{{ question.student }} at {{ question.time_asked }}</p>
-    {% else if question.status == 'waiting' %}
-      <p>{{ number }}{{ question.student }} at {{ question.time_asked }}</p>
+{% if question_list %}
+    {% for question in question_list %}
+        {% if question.status == 'working' %}
+          <p><img src="{% static "classes/parrot-small.gif" %}">{{ number }}{{ question.student }} at {{ question.time_asked }}</p>
+        {% elif question.status == 'waiting' %}
+          <p>{{ number }}{{ question.student }} at {{ question.time_asked }}</p>
+        {% endif %}
+    {% endfor %}
+{% else %}
+    <p>No questions yet!</p>
 {% endif %}
-{% endfor %}
+
 {% endblock %}

@@ -37,8 +37,6 @@ def ta_dashboard(request):
         context['session_exists'] = 'true'
         context['session'] = Session.objects.get(owned_by=current_user)
         context['question_list'] = Question.objects.filter(session=context['session']).all()
-    else:
-        context['session_exists'] = 'false'
 
     return render(request, 'classes/ta_dashboard.html', context)
 
