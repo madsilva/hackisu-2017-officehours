@@ -7,9 +7,8 @@
     {% block title %}<title>Office Hours</title>{% endblock %}
 
     <!-- including JS, JQuery, and Bootstrap -->
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- including custom stylesheet -->
     {% load static %}
@@ -25,10 +24,8 @@
     <div class="col-sm-12">
       <header class="page-header">
         <h1><a href="/">Welcome to the Office Hours Queue</a></h1>
-        <img src="{% static "classes/parrot.gif" %}" />
-          {% if user.is_authenticated %}
-          <p><a href="{% url 'logout' %}">Log out TA</a></p>
-          {% endif %}
+        <p><img src="{% static "classes/parrot.gif" %}"></p>
+      </header>
     </div>
   </div>
 </div>
@@ -42,7 +39,7 @@
     <div class="row">
         <div class="col-sm-12">
             <footer class="page-footer">
-                <p>Footer content goes here. We're always watching!</p>
+                <p>Footer content goes here. We're always watching! <img scr="{% static "classes/tripletparrot.gif" %}"></p>
             </footer>
         </div>
     </div>
