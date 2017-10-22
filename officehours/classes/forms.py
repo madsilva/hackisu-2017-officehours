@@ -10,7 +10,7 @@ class CreateSessionForm(forms.Form):
 class StudentLoginForm(forms.Form):
     canvas_id = forms.CharField()
     session_password = forms.CharField()
-    question = forms.CharField()
+    question = forms.CharField(widget=forms.Textarea)
 
     def is_valid(self):
         valid = super(StudentLoginForm, self).is_valid()

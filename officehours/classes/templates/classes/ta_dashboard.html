@@ -4,10 +4,26 @@
 {% if session_exists %}
     <h2>Session password: {{ session.password }}</h2>
     <p>Public question queue link: <a href="{% url 'session_detail_view' session.pk %}">{% url 'session_detail_view' session.pk %}</a></p>
+    <p><a href="{% url 'delete_session' session.pk %}">Delete session</a></p>
     <h2>Questions</h2>
     {% if question_list %}
         {% for question in question_list %}
+            {% if question.status != 'finished' %}
             <p>{{ question.text }} asked by {{ question.student }} at {{ question.time }}</p>
+            <form action="/change_question_status" method="POST">
+                {% csrf_token %}
+                {% if question.status == 'waiting' %}
+                <input type="hidden" value="working" name="status">
+                <input type="submit" value="Set question to working">
+                {% else %}
+                <input type="hidden" value="finished" name="status">
+                <input type="submit" value="Set question to finished">
+                {% endif %}
+                <input type="hidden" value="{{ question.pk }}" name="pk">
+
+            </form>
+
+            {% endif %}
         {% endfor %}
     {% else %}
     <p>No questions yet!</p>

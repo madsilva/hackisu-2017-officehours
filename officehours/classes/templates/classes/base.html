@@ -24,11 +24,16 @@
     <div class="col-sm-12">
       <header class="page-header">
         <h1><a href="/">Welcome to the Office Hours Queue</a></h1>
-        <p><img src="{% static "classes/parrot.gif" %}"></p>
-      </header>
+        <img src="{% static "classes/parrot.gif" %}" />
+          {% if user.is_authenticated %}
+          <p><a href="{% url 'ta_dashboard' %}">TA Dashboard</a></p>
+          <p><a href="{% url 'logout' %}">Log out TA</a></p>
+          {% endif %}
+        </header>
     </div>
   </div>
 </div>
+
 <div class="container page-container">
 
 {% block content %}{% endblock %}
