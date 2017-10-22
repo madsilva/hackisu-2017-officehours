@@ -4,6 +4,7 @@
 {% if session_exists %}
     <h2>Session password: {{ session.password }}</h2>
     <p>Public question queue link: <a href="{% url 'session_detail_view' session.pk %}">{% url 'session_detail_view' session.pk %}</a></p>
+    <p><a href="{% url 'delete_session' session.pk %}">Delete session</a></p>
     <h2>Questions</h2>
     {% if question_list %}
         {% for question in question_list %}

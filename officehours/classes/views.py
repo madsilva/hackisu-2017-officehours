@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.views.generic import DetailView
+from django.urls import reverse_lazy
+from django.views.generic import DetailView, DeleteView
 
 from .forms import StudentLoginForm, CreateSessionForm
 from .models import Question, Student, Session
@@ -68,3 +69,9 @@ class SessionDetailView(DetailView):
         context['question_list'] = Question.objects.filter(session=self.object, status__in=statuses).order_by('time_asked')
         context['range'] = range(1, len(context['question_list']))
         return context
+
+
+class SessionDeleteView(DeleteView):
+    model = Session
+    success_url = reverse_lazy('ta_dashboard')
+    template_name = 'classes/session_delete.html'
