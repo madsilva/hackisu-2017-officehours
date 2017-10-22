@@ -1,16 +1,21 @@
 {% extends 'classes/base.html' %}
 {% block content %}
 
-{% if session_exists == "false" %}
-<form action="{% url 'create_session' %}">
-    <input type="submit" value="Create Session">
-</form>
+{% if session_exists %}
+    <h2>Session password: {{ session.password }}</h2>
+    <p>Public question queue link: <a href="{% url 'session_detail_view' session.pk %}">{% url 'session_detail_view' session.pk %}</a></p>
+    <h2>Questions</h2>
+    {% if question_list %}
+        {% for question in question_list %}
+            <p>{{ question.text }} asked by {{ question.student }} at {{ question.time }}</p>
+        {% endfor %}
+    {% else %}
+    <p>No questions yet!</p>
+    {% endif %}
 {% else %}
-<h2>Session password: {{ session.password }}</h2>
-<h2>Questions</h2>
-{% for question in question_list %}
-<p>{{ question.text }} asked by {{ question.student }} at {{ question.time }}</p>
-{% endfor %}
+    <form action="{% url 'create_session' %}" method="get">
+        <input type="submit" value="Create Session">
+    </form>
 {% endif %}
 
 {% endblock %}
