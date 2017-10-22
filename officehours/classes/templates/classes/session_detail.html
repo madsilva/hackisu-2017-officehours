@@ -5,8 +5,8 @@
 // refresh the page every 5 second
 var timer = setInterval(
   function () {
-    $('#thisdiv').load(document.URL +  ' #thisdiv');
-  },
+      window.location.reload(1);
+    },
   5000
 );
 </script>

@@ -1,6 +1,14 @@
 {% extends 'classes/base.html' %}
 {% block content %}
-
+<script>
+// refresh the page every 5 second
+var timer = setInterval(
+  function () {
+      window.location.reload(1);
+    },
+  5000
+);
+</script>
 {% if session_exists %}
     <h2>Session password: {{ session.password }}</h2>
     <p>Public question queue link: <a href="{% url 'session_detail_view' session.pk %}">{% url 'session_detail_view' session.pk %}</a></p>
