@@ -7,6 +7,6 @@
       <p><img src="{% static "classes/parrot-small.gif" %}">{{ number }}{{ question.student }} at {{ question.time_asked }}</p>
     {% else if question.status == 'waiting' %}
       <p>{{ number }}{{ question.student }} at {{ question.time_asked }}</p>
-    {% endif %}
+{% endif %}
 {% endfor %}
 {% endblock %}
