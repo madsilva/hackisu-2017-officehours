@@ -1,5 +1,12 @@
 {% extends 'classes/base.html' %}
 {% block content %}
+<div class="container page-container">
+  <div class="row">
+    <div class="col-sm-12">
+      <p>Questions MUST be specific and demonstrate that you've given thought to the assignment</p>
+      <p>We will not be able to provide proper assistance without a meaningful question to answer.</p>
+    </div>
+  </div>
 <form action="" method="POST">
     {% csrf_token %}
     {{ form }}

@@ -3,6 +3,10 @@
 {% load static %}
 
 {% for question in question_list %}
-<p><img src="{% static "classes/parrot-small.gif" %}">{{ number }}{{ question.student }} at {{ question.time_asked }}</p>
+    {% if question.status == 'working' %}
+      <p><img src="{% static "classes/parrot-small.gif" %}">{{ number }}{{ question.student }} at {{ question.time_asked }}</p>
+    {% else if question.status == 'waiting' %}
+      <p>{{ number }}{{ question.student }} at {{ question.time_asked }}</p>
+    {% endif %}
 {% endfor %}
 {% endblock %}

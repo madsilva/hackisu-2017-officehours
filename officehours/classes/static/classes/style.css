@@ -4,6 +4,10 @@
     color: #262626;
 }
 
+.header-container{
+  max-width: 1300px;
+}
+
 .container {
     max-width: 1300px;
 }
