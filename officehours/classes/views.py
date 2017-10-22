@@ -66,6 +66,7 @@ class SessionDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(SessionDetailView, self).get_context_data(**kwargs)
-        context['question_list'] = Question.objects.filter(session=self.object, status='waiting').order_by('time_asked')
+        statuses = ['waiting', 'working']
+        context['question_list'] = Question.objects.filter(session=self.object, status__in=statuses).order_by('time_asked')
         context['range'] = range(1, len(context['question_list']))
         return context
